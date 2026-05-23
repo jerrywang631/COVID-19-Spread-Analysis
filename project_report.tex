@@ -1,0 +1,70 @@
+\documentclass[fontsize=11pt]{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+
+\title{CSC111 Project2 Proposal: COVID-19 Spread Analysis: A Comparative Study of Canada and USA (2020-2022)}
+\author{Zhenming Liu, Ziheng Wang, Jialun Wei, Ruocheng Wen}
+\date{Tuesday, March 16, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+\textbf{The goal of our project is to build an interactive tool to visualize the data about COVID-19 in the US and Canada during 2020 and 2022.} 
+
+North America, particularly the United States and Canada, has experienced multiple waves of the COVID-19 pandemic, with significant regional variations in its progression. Although a vast amount of data is available for research, both the general public and researchers still need intuitive and interactive ways to analyze the spread of the pandemic, regional differences, and trends over time.
+
+This project aims to leverage data visualization techniques to provide users with an interactive tool that allows them to generate clear and insightful charts based on different time periods, regions, and statistical indicators (such as case numbers, case density, and pandemic growth rates). Through this approach, users can better observe and understand how the pandemic evolved across different regions of the United States and Canada from 2020 to 2022.
+
+\section*{Datasets Used in Project}
+For Canada, there are 2 datasets. One is "covid19 canada.csv", the other is "population canada.csv". They are both from Canada government (as reference below). For the US, there are 4 datasets. One is "population us.csv", the rest are datasets about COVID by year (us-counties-2020.csv", "us-counties-2021.csv.", "us-counties-2022.csv").
+
+\section*{Computation Overview}
+First, the data about Canada and the US are stored in 2 trees separately.  
+
+        1st level: it stores the country name (Canada or US).
+        
+        2nd level: it stores the province/state names in the country.
+        
+        3rd level: it stores the year from 2020-2022.
+        
+        4th level: it stores the 12 months in each year.
+        
+        5th level: it stores the number of cases in that month.
+        
+        6th level: it stores the population in that province/state.
+        
+Second, we mainly perform 4 computations: 1.total cases 2.case density 3. growth rate. 4. data filtering
+
+        1. We compute the total number of cases of a country in the given year.
+
+        2. We compute the case density in a province/state on the given month.
+
+        3. We compute the growth rate for a province/state during the given time period.
+
+        4. The data sets we use for Canada and the US have different format, and some data are recorded on a daily basis or on a county scale. We manage to merge the information we need into the format we desire.
+
+Third, users are allowed to choice from 1 to 4. 1 to 3 represents the first 3 computations we mention above, 4 allows users to quit the program. If choose 1, the program will generate a map of Canada or the US that shows total number of cases in the given year. If choose 2, the program will generate a heat map of case density in the given month in Canada or the US. If choose 3, the program will generate a image stored in the file.
+
+Fourth, we use pandas, plotly.express, urllib.request and json. Pandas is used to generate the maps, the plotly is used to generate the line chart. urllib.request helps use an URL to get Canada's map.
+\section*{References}
+
+Bureau, US Census. “State Population Totals and Components of Change: 2020-2024.” Census.Gov, 25 Nov. 2024, www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html.
+
+
+\textit{Population Estimates, Quarterly.} Population Estimates, Quarterly, Government of Canada, Statistics Canada, 17 Dec. 2024, \url{https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901&cubeTimeFrame.startMonth=01&cubeTimeFrame.startYear=2019&cubeTimeFrame.endMonth=10&cubeTimeFrame.endYear=2024&referencePeriods=20190101%2C20241001}.
+
+Nytimes. “Nytimes/COVID-19-Data: A Repository of Data on Coronavirus Cases and Deaths in the U.S.” GitHub, github.com/nytimes/covid-19-data. Accessed 4 Mar. 2025. 
+
+Canada, Public Health Agency of. “Covid-19 Epidemiology Update: Current Situation.” Canada.Ca, 11 June 2024, health-infobase.canada.ca/covid-19/current-situation.html. 
+
+% NOTE: LaTeX does have a built-in way of generating references automatically,
+% but it's a bit tricky to use so we STRONGLY recommend writing your references
+% manually, using a standard academic format like APA or MLA.
+% (E.g., https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/general_format.html)
+
+\end{document}

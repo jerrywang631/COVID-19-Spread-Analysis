@@ -1,0 +1,7 @@
+pandas
+plotly
+urllib3
+matplotlib
+python-dateutil
+datetime
+csv
